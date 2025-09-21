@@ -1,266 +1,563 @@
-# ALX Listing App
+# Milestone 2: Responsive Listing Page
 
-A modern, scalable Airbnb clone built with Next.js, TypeScript, and TailwindCSS. This project serves as the foundation for a comprehensive property listing platform, focusing on clean architecture, reusable components, and professional development practices.
+## Project Description
 
-## 🎯 Project Description and Goals
+This project involves building a responsive property listing page using React, TypeScript, and Tailwind CSS. The application will display a collection of luxury properties with filtering capabilities, a hero section, and proper layout organization. The page will be fully responsive, adapting to different screen sizes while maintaining a clean, user-friendly interface.
 
-The ALX Listing App is designed to create a robust foundation for an Airbnb-style property rental platform. Our primary goals include:
+## Learning Objectives
 
-- **Scalable Architecture**: Establish a well-organized codebase that can grow with feature additions
-- **Modern Tech Stack**: Leverage Next.js 13+, TypeScript, and TailwindCSS for optimal performance
-- **Reusable Components**: Build a library of modular UI components for consistent design
-- **Type Safety**: Implement comprehensive TypeScript interfaces for maintainable code
-- **Professional Standards**: Follow industry best practices for production-ready applications
-- **User Experience**: Create an intuitive, responsive interface for property browsing and booking
+By completing this project, you will:
 
-The project currently focuses on the foundational listing page where users can browse properties, search for accommodations, and explore different property types. Future iterations will include booking functionality, user authentication, payment processing, and host management features.
+1. Implement responsive web design principles using Tailwind CSS
+2. Create reusable React components for layout (Header, Footer, Layout)
+3. Work with TypeScript interfaces for type safety
+4. Structure a Next.js application with proper component organization
+5. Render dynamic data from an array of objects
+6. Implement filtering functionality for property listings
+7. Practice best practices in component composition and styling
+8. Learn to break down UI mockups into logical components
 
-## 📁 Project Structure
+## Requirements
 
-Our project follows a clean, scalable architecture with clearly defined responsibilities for each directory:
+### Technical Requirements
 
-```md
-alx-listing-app/
-├── Button.tsx
-├── components
-│   └── common
-│       ├── Button.tsx
-│       └── Card.tsx
-├── constants
-│   └── index.ts
-├── eslint.config.mjs
-├── index.ts
-├── interfaces
-├── next-env.d.ts
-├── next.config.ts
-├── package-lock.json
-├── package.json
-├── pages
-│   ├── _app.tsx
-│   ├── _document.tsx
-│   ├── api
-│   │   └── hello.ts
-│   └── index.tsx
-├── postcss.config.js
-├── public
-│   ├── assets
-│   ├── favicon.ico
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── next.svg
-│   ├── vercel.svg
-│   └── window.svg
-├── README.md
-├── styles
-│   ├── globals.css
-│   └── Home.module.css
-├── tailwind.config.js
-└── tsconfig.json
+- Use Next.js as the React framework
+- Implement TypeScript for type checking
+- Style components exclusively with Tailwind CSS
+- Create responsive layouts that work on mobile, tablet, and desktop
+- Structure components in a logical folder hierarchy
+- Use functional components with proper TypeScript typing
+
+## Functional Requirements
+
+1. **Layout Components**
+
+   - Header with navigation, logo, and search
+   - Footer with relevant links and information
+   - Layout wrapper for consistent page structure
+
+2. **Home Page**
+
+   - Hero section with background image and call-to-action text
+   - Filter section with clickable filter pills
+   - Property listing grid displaying all properties from the sample data
+   - Responsive property cards showing key information
+
+3. **Data Management**
+
+   - Properly typed property data interface
+   - Sample data array with complete property information
+
+### Best Practices
+
+1. **Component Organization**
+
+   - Follow a consistent folder structure
+   - Separate layout components from page components
+   - Keep components small and focused
+
+2. **Styling**
+
+   - Use Tailwind’s utility classes effectively
+   - Implement responsive design with mobile-first approach
+   - Maintain consistent spacing and typography
+
+3. **TypeScript**
+
+   - Define clear interfaces for all props
+   - Type all components and functions properly
+   - Use TypeScript to catch potential errors early
+
+4. **Performance**
+
+   - Optimize images for web
+   - Implement proper loading states
+   - Consider lazy loading for non-critical components
+
+5. **Accessibility**
+
+      - Use semantic HTML
+      - Ensure proper contrast ratios
+      - Include alt text for images
+      - Make interactive elements keyboard-navigable
+
+### Expected Outcomes
+
+- A fully responsive property listing page
+- Clean, maintainable code with proper TypeScript typing
+- Reusable layout components
+- Properly structured property data
+- Functional filter components
+- Visually appealing UI with consistent styling
+
+**📝 Project Assessment (Hybrid)**
+Your project will be evaluated primarily through manual reviews. To ensure you receive your full score, please:
+
+## Tasks
+
+### 0. Build Responsive Listing Page with Tailwind CSS
+
+**mandatory**
+
+**Objective:**
+
+The goal of this milestone is to break down the provided [mockup](https://www.figma.com/design/E2BRqdPcKkrnX6hLGPto8Z/Project-Airbnb?node-id=1-4&p=f&t=hhUYVWcYaZn1ieWo-0) into sections and build the structure of a responsive listing page for the application. You will create key components such as the `Header`, `Footer`, and `Layout` using **Tailwind CSS** for styling, ensuring that the page is responsive and well-organized. You will also implement the hero section, filters, and listing section using a set of property data.
+
+By the end of this task, you will have a complete responsive layout that dynamically renders property listings and handles user filters.
+
+**Instructions:**
+
+**Project Setup:**
+
+Duplicate the repository:
+
+- Duplicate the `alx-listing-app` repository and rename it to `alx-listing-app-00`.
+
+Create the following folder structure:
+
+- Create `components/layout/Header.tsx`.
+
+- Create `components/layout/Footer.tsx`.
+
+- Create `components/layout/Layout.tsx`.
+
+**Add Property Listing Data:**
+
+- In `constants/index.ts`, create and export a constant `PROPERTYLISTINGSAMPLE` which is an array of property data (provided in the instruction). This array contains details of properties such as name, address, rating, category, price, offers, and image URL.
+
+```typescript
+export const PROPERTYLISTINGSAMPLE: PropertyProps []  =  [
+  {
+    name: "Villa Ocean Breeze",
+    address: {
+      state: "Seminyak",
+      city: "Bali",
+      country: "Indonesia"
+    },
+    rating: 4.89,
+    category: ["Luxury Villa", "Pool", "Free Parking"],
+    price: 3200,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "4-6"
+    },
+    image: "https://example.com/image1.jpg",
+    discount: ""
+  },
+  {
+    name: "Mountain Escape Chalet",
+    address: {
+      state: "Aspen",
+      city: "Colorado",
+      country: "USA"
+    },
+    rating: 4.70,
+    category: ["Mountain View", "Fireplace", "Self Checkin"],
+    price: 1800,
+    offers: {
+      bed: "4",
+      shower: "2",
+      occupants: "5-7"
+    },
+    image: "https://example.com/image2.jpg",
+    discount: "30"
+  },
+  {
+    name: "Cozy Desert Retreat",
+    address: {
+      state: "Palm Springs",
+      city: "California",
+      country: "USA"
+    },
+    rating: 4.92,
+    category: ["Desert View", "Pet Friendly", "Self Checkin"],
+    price: 1500,
+    offers: {
+      bed: "2",
+      shower: "1",
+      occupants: "2-3"
+    },
+    image: "https://example.com/image3.jpg",
+    discount: ""
+  },
+  {
+    name: "City Lights Penthouse",
+    address: {
+      state: "New York",
+      city: "New York",
+      country: "USA"
+    },
+    rating: 4.85,
+    category: ["City View", "Free WiFi", "24h Checkin"],
+    price: 4500,
+    offers: {
+      bed: "2",
+      shower: "2",
+      occupants: "2-4"
+    },
+    image: "https://example.com/image4.jpg",
+    discount: "15"
+  },
+  {
+    name: "Riverside Cabin",
+    address: {
+      state: "Queenstown",
+      city: "Otago",
+      country: "New Zealand"
+    },
+    rating: 4.77,
+    category: ["Riverside", "Private Dock", "Free Kayaks"],
+    price: 2800,
+    offers: {
+      bed: "3",
+      shower: "2",
+      occupants: "4-6"
+    },
+    image: "https://example.com/image5.jpg",
+    discount: "20"
+  },
+  {
+    name: "Modern Beachfront Villa",
+    address: {
+      state: "Sidemen",
+      city: "Bali",
+      country: "Indonesia"
+    },
+    rating: 4.95,
+    category: ["Beachfront", "Private Pool", "Chef Service"],
+    price: 5000,
+    offers: {
+      bed: "5",
+      shower: "4",
+      occupants: "8-10"
+    },
+    image: "https://example.com/image6.jpg",
+    discount: ""
+  },
+  {
+    name: "Lakeside Chalet",
+    address: {
+      state: "Banff",
+      city: "Alberta",
+      country: "Canada"
+    },
+    rating: 4.65,
+    category: ["Lakeside", "Mountain View", "Hiking Trails"],
+    price: 2300,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "4-5"
+    },
+    image: "https://example.com/image7.jpg",
+    discount: "10"
+  },
+  {
+    name: "Tropical Garden Villa",
+    address: {
+      state: "Koh Samui",
+      city: "Surat Thani",
+      country: "Thailand"
+    },
+    rating: 4.80,
+    category: ["Garden", "Free Parking", "Self Checkin"],
+    price: 2750,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "5-6"
+    },
+    image: "https://example.com/image8.jpg",
+    discount: "25"
+  },
+  {
+    name: "Urban Loft",
+    address: {
+      state: "Berlin",
+      city: "Berlin",
+      country: "Germany"
+    },
+    rating: 4.60,
+    category: ["City Center", "Free WiFi", "24h Checkin"],
+    price: 2000,
+    offers: {
+      bed: "2",
+      shower: "1",
+      occupants: "2-3"
+    },
+    image: "https://example.com/image9.jpg",
+    discount: ""
+  },
+  {
+    name: "Secluded Forest Cabin",
+    address: {
+      state: "Whistler",
+      city: "British Columbia",
+      country: "Canada"
+    },
+    rating: 4.72,
+    category: ["Secluded", "Hot Tub", "Self Checkin"],
+    price: 2600,
+    offers: {
+      bed: "4",
+      shower: "2",
+      occupants: "5-7"
+    },
+    image: "https://example.com/image10.jpg",
+    discount: "40"
+  },
+  {
+    name: "Cliffside Villa",
+    address: {
+      state: "Amalfi",
+      city: "Salerno",
+      country: "Italy"
+    },
+    rating: 4.93,
+    category: ["Cliffside", "Infinity Pool", "Sea View"],
+    price: 6000,
+    offers: {
+      bed: "4",
+      shower: "4",
+      occupants: "6-8"
+    },
+    image: "https://example.com/image11.jpg",
+    discount: "50"
+  },
+  {
+    name: "Coastal Escape Villa",
+    address: {
+      state: "Noosa",
+      city: "Queensland",
+      country: "Australia"
+    },
+    rating: 4.83,
+    category: ["Beachfront", "Pet Friendly", "Free Parking"],
+    price: 3400,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "4-6"
+    },
+    image: "https://example.com/image12.jpg",
+    discount: ""
+  },
+  {
+    name: "Historical Villa",
+    address: {
+      state: "Florence",
+      city: "Tuscany",
+      country: "Italy"
+    },
+    rating: 4.67,
+    category: ["Historical", "Free Breakfast", "Self Checkin"],
+    price: 2700,
+    offers: {
+      bed: "2",
+      shower: "2",
+      occupants: "2-4"
+    },
+    image: "https://example.com/image13.jpg",
+    discount: "35"
+  },
+  {
+    name: "Downtown Apartment",
+    address: {
+      state: "Tokyo",
+      city: "Tokyo",
+      country: "Japan"
+    },
+    rating: 4.81,
+    category: ["City Center", "Free WiFi", "Public Transport"],
+    price: 2200,
+    offers: {
+      bed: "1",
+      shower: "1",
+      occupants: "2"
+    },
+    image: "https://example.com/image14.jpg",
+    discount: ""
+  },
+  {
+    name: "Luxury Safari Lodge",
+    address: {
+      state: "Serengeti",
+      city: "Mara",
+      country: "Tanzania"
+    },
+    rating: 4.97,
+    category: ["Safari", "Guided Tours", "Free Breakfast"],
+    price: 4500,
+    offers: {
+      bed: "4",
+      shower: "4",
+      occupants: "6-8"
+    },
+    image: "https://example.com/image15.jpg",
+    discount: "20"
+  },
+  {
+    name: "Countryside Cottage",
+    address: {
+      state: "Cotswolds",
+      city: "Gloucestershire",
+      country: "UK"
+    },
+    rating: 4.58,
+    category: ["Countryside", "Fireplace", "Self Checkin"],
+    price: 1800,
+    offers: {
+      bed: "2",
+      shower: "1",
+      occupants: "2-4"
+    },
+    image: "https://example.com/image16.jpg",
+    discount: "25"
+  },
+  {
+    name: "Riverfront Mansion",
+    address: {
+      state: "Paris",
+      city: "Île-de-France",
+      country: "France"
+    },
+    rating: 4.86,
+    category: ["Riverfront", "Private Garden", "Self Checkin"],
+    price: 5000,
+    offers: {
+      bed: "4",
+      shower: "3",
+      occupants: "6-8"
+    },
+    image: "https://example.com/image17.jpg",
+    discount: "30"
+  },
+  {
+    name: "Ski Chalet",
+    address: {
+      state: "Zermatt",
+      city: "Valais",
+      country: "Switzerland"
+    },
+    rating: 4.75,
+    category: ["Mountain View", "Ski Access", "Fireplace"],
+    price: 3900,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "4-5"
+    },
+    image: "https://example.com/image18.jpg",
+    discount: ""
+  },
+  {
+    name: "Island Paradise Villa",
+    address: {
+      state: "Mahe",
+      city: "Victoria",
+      country: "Seychelles"
+    },
+    rating: 4.98,
+    category: ["Beachfront", "Private Pool", "Chef Service"],
+    price: 6500,
+    offers: {
+      bed: "5",
+      shower: "5",
+      occupants: "8-10"
+    },
+    image: "https://example.com/image19.jpg",
+    discount: "60"
+  },
+  {
+    name: "Clifftop Retreat",
+    address: {
+      state: "Cape Town",
+      city: "Western Cape",
+      country: "South Africa"
+    },
+    rating: 4.78,
+    category: ["Ocean View", "Private Pool", "Self Checkin"],
+    price: 4100,
+    offers: {
+      bed: "3",
+      shower: "3",
+      occupants: "4-5"
+    },
+    image: "https://example.com/image20.jpg",
+    discount: ""
+  }
+];
 ```
 
-### Directory Purpose Explanation
+**Create Interface for Property Data:**
 
-#### `components/`
+- In `interfaces/index.ts`, define a `PropertyProps` interface that describes the structure of each property in the `PROPERTYLISTINGSAMPLE`. This interface will help with TypeScript type-checking when rendering the property data.
 
-Houses all reusable UI components, organized by usage pattern:
+**Implement Layout Components:**
 
-- **`common/`**: Generic components used across multiple pages (Button, Card, Modal, etc.)
-- **`layout/`**: Components specific to page layout structure (Header, Footer, Sidebar, etc.)
+- In `components/layout/Header.tsx`, create a functional component that renders the header content, including search bar, sign and sign up , Types of accommodation (e.g. Rooms, Mansion, Countryside, etc.) and a logo.
 
-Each component follows a consistent structure with its own directory containing the component file and an index.ts for clean imports.
+- In `components/layout/Footer.tsx`, create a functional component that renders the footer content.
 
-#### `interfaces/`
+- In `components/layout/Layout.tsx`, create a layout component that wraps the header, footer, and main content as follows:
 
-Contains all TypeScript type definitions and interfaces, promoting:
+```typescript
+import Header from "./Header";
+import Footer from "./Footer";
 
-- **Type Safety**: Ensures data consistency across the application
-- **Developer Experience**: Provides IntelliSense and error detection
-- **Documentation**: Serves as living documentation for data structures
-- **Maintainability**: Makes refactoring safer and more predictable
+const Layout: React.FC = ({ children }) => {
+  return (
+    <>
+      <Header />
+      <main className="min-h-screen">{children}</main>
+      <Footer />
+    </>
+  );
+}
 
-#### `constants/`
-
-Stores application-wide constants and configuration:
-
-- **API Endpoints**: Centralized API URL management
-- **UI Constants**: Navigation items, color schemes, breakpoints
-- **Business Logic**: Property types, amenities, pricing tiers
-- **Configuration**: App metadata, feature flags, default values
-
-#### `public/assets/`
-
-Organizes static assets for optimal performance and maintainability:
-
-- **`images/`**: Property photos, hero backgrounds, placeholder images
-- **`icons/`**: SVG icons for consistent, scalable iconography
-- **`logo/`**: Brand assets and logo variations for different contexts
-
-## 🚀 Getting Started
-
-Follow these steps to run the project locally on your development machine.
-
-### Prerequisites
-
-Ensure you have the following installed on your system:
-
-- **Node.js**: Version 16.0.0 or higher
-- **npm**: Version 8.0.0 or higher (comes with Node.js)
-- **Git**: For version control (optional but recommended)
-
-You can verify your installations by running:
-
-```bash
-node --version
-npm --version
+export default Layout;
 ```
 
-### Installation
+**Modify Application Root:**
 
-1. **Clone the repository** (or download the project files):
+- In `pages/_app.tsx`, update the main structure of your app to wrap all pages with the `Layout` component. This will ensure that the `Header` and `Footer` are present on every page.
 
-   ```bash
-   git clone <repository-url>
-   cd alx-listing-app
-   ```
+```typescript
+import Layout from "@/components/layout/Layout";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
 
-2. **Install project dependencies**:
-
-   ```bash
-   npm install
-   ```
-
-   This command will install all required packages including:
-   - Next.js framework
-   - React and React DOM
-   - TypeScript and type definitions
-   - TailwindCSS for styling
-   - ESLint for code quality
-   - Additional development tools
-
-3. **Set up environment variables** (optional):
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Edit `.env.local` to add any required environment variables for your development setup.
-
-### Running the Development Server
-
-1. **Start the development server**:
-
-   ```bash
-   npm run dev
-   ```
-
-2. **Open your browser** and navigate to:
-
-   ```
-   http://localhost:3000
-   ```
-
-3. **Begin development**: The application will automatically reload when you make changes to the source code.
-
-### Available Scripts
-
-The project includes several useful npm scripts for development:
-
-```bash
-# Development
-npm run dev          # Start development server with hot reload
-npm run build        # Create production build
-npm run start        # Start production server
-
-# Code Quality
-npm run lint         # Run ESLint to check for code issues
-npm run lint:fix     # Automatically fix ESLint issues
-npm run type-check   # Run TypeScript compiler check
-
-# Formatting
-npm run format       # Format code using Prettier
-npm run format:check # Check if code is properly formatted
-
-# Analysis
-npm run analyze      # Analyze bundle size (requires ANALYZE=true)
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}
 ```
 
-### Development Workflow
+**Hero Section Implementation:**
 
-1. **Start the development server**: `npm run dev`
-2. **Make your changes** to the source code
-3. **Check code quality**: `npm run lint` and `npm run type-check`
-4. **Format your code**: `npm run format`
-5. **Test your changes** in the browser at `http://localhost:3000`
-6. **Commit your changes** with a descriptive message
+- In `pages/index.tsx`, implement the hero section. This section should include a background image and a heading with the text: **“Find your favorite place here!” and “The best prices for over 2 million properties worldwide.”**.
 
-## 🛠️ Technology Stack
+- Make sure to import your background image into your constants before using it here
 
-- **Framework**: Next.js 13+ (App Directory)
-- **Language**: TypeScript
-- **Styling**: TailwindCSS
-- **Code Quality**: ESLint + Prettier
-- **Package Manager**: npm
-- **Version Control**: Git
+**Filter Section Implementation:**
 
-## 🌟 Key Features
+- Implement a filter section that uses a set of predefined filters (e.g., `Top Villa`, `Self` `Checkin`, etc.).
 
-- **Responsive Design**: Mobile-first approach with seamless desktop experience
-- **Type Safety**: Comprehensive TypeScript implementation
-- **Component Library**: Reusable, well-documented components
-- **Modern UI**: Clean, professional design with smooth interactions
-- **Performance Optimized**: Fast loading times and efficient rendering
-- **SEO Ready**: Proper meta tags and semantic HTML structure
+- Create a `Pill` component that accepts filter props and renders them as clickable pills.
 
-## 🚧 Current Status
+- Use the Pill component to map over an array of filter labels and display them.
 
-This is the foundational milestone of the ALX Listing App. The current implementation includes:
+**Listing Section Implementation:**
 
-✅ Project scaffolding and configuration  
-✅ Basic component library (Button, Card, Header, Footer)  
-✅ TypeScript interfaces and type safety  
-✅ Responsive homepage with hero section  
-✅ Property type browsing  
-✅ Featured properties showcase  
-✅ Professional navigation and footer  
+- In `pages/index.tsx`, implement the listing section that maps over `PROPERTYLISTINGSAMPLE` to render individual property cards.
 
-## 🔮 Future Enhancements
+- Each property card should display the image, name, price, and rating of the property.
 
-Planned features for upcoming milestones:
+**Repo:**
 
-- User authentication and profiles
-- Advanced property search and filtering
-- Detailed property pages with image galleries
-- Booking system with date selection
-- Payment processing integration
-- Host dashboard and property management
-- Review and rating system
-- Real-time messaging between guests and hosts
-
-## 🤝 Contributing
-
-This project follows industry best practices for collaboration:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Make** your changes following the established patterns
-4. **Test** your changes thoroughly
-5. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-6. **Push** to the branch (`git push origin feature/amazing-feature`)
-7. **Open** a Pull Request
-
-## 📄 License
-
-This project is part of the ALX Software Engineering Program and is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- **ALX Software Engineering Program** for providing the project framework
-- **Next.js Team** for the excellent React framework
-- **Tailwind Labs** for the utility-first CSS framework
-- **TypeScript Team** for making JavaScript development more robust
-
----
-
-**Happy Coding! 🚀**
-
-*Built with ❤️ for the ALX Software Engineering Program*
+- **GitHub repository**: **alx-listing-app-00**
+- **File**: [pages/index.tsx](./pages/index.tsx), [components/layout/Header.tsx](./components/layout/Header.tsx), [components/layout/Footer.tsx](./components/layout/Footer.tsx), [components/layout/Layout.tsx](./components/layout/Layout.tsx), [interfaces/index.ts](./interfaces/index.ts), [constants/index.ts](./constants/index.ts)
